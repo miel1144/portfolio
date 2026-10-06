@@ -122,7 +122,7 @@ export default function ProjectSlide({
                   </div>
                 )}
                 <h2
-                  className="font-aston leading-none"
+                  className="font-kiwi leading-none"
                   style={{
                     fontSize: 'clamp(2.5rem, 7vw, 5rem)',
                     color: project.theme.text,
