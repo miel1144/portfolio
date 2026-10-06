@@ -114,7 +114,7 @@ export default function HeroSlide() {
             transition={{ delay: 0.4, duration: 1.2, ease }}
             className="font-aston leading-none"
             style={{
-              fontSize: 'clamp(8rem, 22vw, 18rem)',
+              fontSize: 'clamp(5rem, 15vw, 12rem)',
               background: `linear-gradient(135deg, ${theme.secondary}, ${theme.primary})`,
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
