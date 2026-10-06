@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tipografías locales */
+@font-face {
+  font-family: 'Kiwi Soda';
+  src: url('/fonts/KiwiSoda.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Aston Script';
+  src: url('/fonts/AstonScript.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'DeFonte';
+  src: url('/fonts/DeFonte-Leger.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'DeFonte';
+  src: url('/fonts/DeFonte-Normale.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'DeFonte';
+  src: url('/fonts/DeFonte-DemiGras.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'DeFonte';
+  src: url('/fonts/DeFonte-Gros.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Oceanside Typewriter';
+  src: url('/fonts/OceansideTypewriter.ttf') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@layer base {
+  :root {
+    --bg: #0a0a0f;
+    --text: #fafafa;
+    --text-dim: #a1a1aa;
+  }
+
+  html,
+  body {
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  body {
+    font-family: 'DeFonte', system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar { display: none; }
+}
+
+@layer utilities {
+  .font-kiwi { font-family: 'Kiwi Soda', system-ui, sans-serif; }
+  .font-aston { font-family: 'Aston Script', cursive; }
+  .font-defonte { font-family: 'DeFonte', serif; }
+  .font-oceanside { font-family: 'Oceanside Typewriter', monospace; }
+  .font-sans-clean { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .noise {
+    position: relative;
+  }
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

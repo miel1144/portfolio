@@ -1,0 +1,199 @@
+{
+  "personal": {
+    "name": "Miel (Imelda Almanza)",
+    "shortName": "Miel",
+    "role": "Desarrolladora de Software Multiplataforma",
+    "tagline": "Tecnología con sentido, inspirada por mi alrededor.",
+    "description": "Interesada en la tecnología e inspirada por mi alrededor para crear soluciones reales a problemas reales.",
+    "location": "Tijuana, B.C.",
+    "availability": "Disponible para proyectos freelance",
+    "avatar": "/avatar.svg",
+    "resumeUrl": "#"
+  },
+  "education": {
+    "school": "Universidad Tecnológica de Tijuana",
+    "degree": "Desarrollo de Software Multiplataforma",
+    "period": "Cursando 6to cuatrimestre",
+    "current": true
+  },
+  "social": [
+    { "name": "GitHub", "url": "https://github.com/miel1144", "icon": "Github" },
+    { "name": "LinkedIn", "url": "https://www.linkedin.com/in/imelda-almanza", "icon": "Linkedin" },
+    { "name": "Email", "url": "mailto:almanzaaimeelda@gmail.com", "icon": "Mail" }
+  ],
+  "projects": [
+    {
+      "id": "cosechia",
+      "title": "CosechIA",
+      "description": "Plataforma vitivinícola con IA: gestión de viñedos, ciclos, bitácoras, clima y motor de recomendaciones con embeddings y RAG.",
+      "tags": ["Laravel 13", "Vue 3", "Inertia.js", "PostgreSQL", "Embeddings"],
+      "skills": ["PHP", "Vue", "PostgreSQL", "Diseño de identidad"],
+      "url": "#",
+      "repo": "https://github.com/miel1144/CosechIA",
+      "year": "2026",
+      "type": "Estadías / Producción",
+      "device": "desktop",
+      "media": {
+        "logo": "/projects/images/cosechia-icono.png",
+        "logoAlt": "/projects/images/cosechia-isotipo-blanco.png",
+        "screens": [
+          "/projects/images/cosechia-cap1.png",
+          "/projects/images/cosechia-cap2.png"
+        ]
+      },
+      "theme": {
+        "primary": "#4a6b3a",
+        "secondary": "#7d9b5c",
+        "accent": "#c9d4a0",
+        "bg": "#0e1a0d",
+        "text": "#e8f0d8"
+      }
+    },
+    {
+      "id": "monse",
+      "title": "MONSE + MaquinaMonse",
+      "description": "Ecosistema de consumo energético en tiempo real: MaquinaMonse simula medidores con FastAPI y MONSE los recibe, diagnostica y muestra.",
+      "tags": ["FastAPI", "Django", "DRF", "PostgreSQL", "Async"],
+      "skills": ["Python", "FastAPI", "Django", "PostgreSQL", "Backend"],
+      "url": "#",
+      "repo": "https://github.com/miel1144/maquinaMonse",
+      "year": "2026",
+      "type": "Full Stack",
+      "device": "desktop",
+      "media": {
+        "logo": "/projects/images/monse-logo.png",
+        "logoAlt": "/projects/images/monse_blanco.png",
+        "screens": [
+          "/projects/images/monse-cap1.png",
+          "/projects/images/monse-cap2.png",
+          "/projects/images/monse-cap3.png",
+          "/projects/images/monse-cap4.png"
+        ]
+      },
+      "theme": {
+        "primary": "#1e3a5f",
+        "secondary": "#3b5a82",
+        "accent": "#67aacc",
+        "bg": "#0a1628",
+        "text": "#dceaf5"
+      }
+    },
+    {
+      "id": "tonalli",
+      "title": "Tonalli",
+      "description": "Auditoría eléctrica inteligente con luxómetro para hogares mexicanos: predice la Tarifa DAC de CFE y dimensiona paneles solares. Funciona sin internet.",
+      "tags": ["Flutter", "Luxómetro", "SQLite", "Offline-first", "CFE"],
+      "skills": ["Flutter", "Dart", "Sensores", "SQLite", "Lógica tarifaria"],
+      "url": "#",
+      "repo": "https://github.com/miel1144/concurso",
+      "repoSecondary": "https://github.com/miel1144/tonalli_web",
+      "year": "2026",
+      "type": "Mobile · Concurso UTT",
+      "device": "mobile",
+      "media": {
+        "logo": "/projects/images/tonalli-logo.png",
+        "logoAlt": "/projects/images/tonalli-icono-foco.png",
+        "phoneMockup": "/projects/images/totalli-elementografico-telefonoconicono.png",
+        "screens": [
+          "/projects/images/tonalli-cap1.png",
+          "/projects/images/tonalli-cap2.jpeg",
+          "/projects/images/tonalli-cap3.jpeg",
+          "/projects/images/tonalli-cap4.jpeg",
+          "/projects/images/tonalli-cap5.jpeg"
+        ]
+      },
+      "theme": {
+        "primary": "#5A2E0B",
+        "secondary": "#E29F33",
+        "accent": "#FEFADF",
+        "bg": "#1a0f05",
+        "text": "#FEFADF"
+      }
+    },
+    {
+      "id": "angl",
+      "title": "ANGL + GestoLab",
+      "description": "Sistema de gestión de laboratorios para la UTT Tijuana: backend Django + app móvil Flutter con 3 roles y reportes en PDF.",
+      "tags": ["Django", "Flutter", "PostgreSQL", "xhtml2pdf", "Geolocalización"],
+      "skills": ["Django", "Flutter", "PostgreSQL", "PDF", "UX Multi-rol"],
+      "url": "#",
+      "repo": "https://github.com/MickSenpai/ANGL",
+      "repoMobile": "https://github.com/miel1144/agl_mobile",
+      "year": "2026",
+      "type": "Full Stack",
+      "device": "mobile",
+      "media": {
+        "logo": "/projects/images/gestolab-logo.png",
+        "logoAlt": "/projects/images/gestolab-icono.png",
+        "gif": "/projects/images/gestolab-giftelefono.gif",
+        "screens": [
+          "/projects/images/gestolab-cap1.png",
+          "/projects/images/gestolab-cap2.png",
+          "/projects/images/gestolab-cap3.png",
+          "/projects/images/gestolab-cap4.png",
+          "/projects/images/gestolab-cap5.png"
+        ]
+      },
+      "theme": {
+        "primary": "#721C2A",
+        "secondary": "#a83244",
+        "accent": "#f0d4a8",
+        "bg": "#1a0a0d",
+        "text": "#f5e8d8"
+      }
+    },
+    {
+      "id": "tijuana",
+      "title": "Tijuana Accesible",
+      "description": "App de hackathon para reportar problemas de accesibilidad urbana con foto, clasificada por Gemini AI y mostrada en mapa interactivo.",
+      "tags": ["Flutter", "Firebase", "Gemini AI", "flutter_map"],
+      "skills": ["Flutter", "IA", "Firebase", "Hackathon"],
+      "url": "https://devpost.com/software/tjroute",
+      "urlLabel": "Ver en Devpost",
+      "repo": "https://github.com/miel1144/hackapromt",
+      "video": "https://www.youtube.com/shorts/Z_hChKxZGI8",
+      "year": "2026",
+      "type": "Hackathon",
+      "device": "mobile",
+      "media": {
+        "logo": "/projects/images/tj-route-logo.png",
+        "screens": []
+      },
+      "theme": {
+        "primary": "#611224",
+        "secondary": "#B6AE81",
+        "accent": "#d4af7a",
+        "bg": "#0D1117",
+        "text": "#e8dcc4"
+      }
+    }
+  ],
+  "skills": {
+    "frontend": [
+      { "name": "Flutter / Dart", "level": 92 },
+      { "name": "Vue 3", "level": 78 },
+      { "name": "HTML / CSS", "level": 88 },
+      { "name": "Tailwind", "level": 80 },
+      { "name": "Inertia.js", "level": 75 }
+    ],
+    "backend": [
+      { "name": "Python", "level": 88 },
+      { "name": "PHP / Laravel", "level": 85 },
+      { "name": "Django / DRF", "level": 82 },
+      { "name": "FastAPI", "level": 80 },
+      { "name": "PostgreSQL", "level": 80 },
+      { "name": "SQLModel / SQLAlchemy", "level": 78 }
+    ],
+    "tools": [
+      "Git",
+      "Firebase",
+      "Supabase",
+      "Figma",
+      "Trello",
+      "Postman",
+      "Docker",
+      "Render",
+      "Vercel"
+    ]
+  }
+}
