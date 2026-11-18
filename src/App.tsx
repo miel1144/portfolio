@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Branch from './components/Branch'
+import Lightbox from './components/Lightbox'
 import { education, experience, profile, projects, sections, skills } from './data/profile'
 import { bloomTargets, motion } from './lily/bloomState'
 
@@ -10,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
   const [active, setActive] = useState(0)
+  const [gallery, setGallery] = useState<{ title: string; images: string[]; start: number } | null>(null)
   const lenisRef = useRef<Lenis | null>(null)
 
   useEffect(() => {
@@ -66,7 +68,29 @@ export default function App() {
       }),
     )
 
+    // enlaces directos: /portfolio/#proyectos abre en esa sección
+    const hashTarget = location.hash ? document.getElementById(location.hash.slice(1)) : null
+    const hashTimer = hashTarget
+      ? window.setTimeout(() => {
+          if (lenis) lenis.scrollTo(hashTarget, { immediate: true })
+          else hashTarget.scrollIntoView()
+          ScrollTrigger.refresh()
+        }, 100)
+      : 0
+
+    // las imágenes lazy cambian la altura de la página al cargar: recalcular posiciones
+    let refreshTimer = 0
+    const onAssetLoad = (e: Event) => {
+      if (!(e.target instanceof HTMLImageElement)) return
+      window.clearTimeout(refreshTimer)
+      refreshTimer = window.setTimeout(() => ScrollTrigger.refresh(), 150)
+    }
+    document.addEventListener('load', onAssetLoad, true)
+
     return () => {
+      document.removeEventListener('load', onAssetLoad, true)
+      window.clearTimeout(refreshTimer)
+      window.clearTimeout(hashTimer)
       triggers.forEach((t) => t.kill())
       reveals.forEach((r) => r.scrollTrigger?.kill())
       gsap.ticker.remove(tick)
@@ -170,8 +194,25 @@ export default function App() {
           <div className="projects">
             {projects.map((p) => (
               <article key={p.name} className="card project reveal">
-                {p.image ? (
-                  <img src={p.image} alt={`Captura de ${p.name}`} loading="lazy" />
+                {p.image && p.gallery?.length ? (
+                  <button
+                    type="button"
+                    className="project__media"
+                    onClick={() => setGallery({ title: p.name, images: p.gallery!, start: 0 })}
+                    aria-label={`Ver ${p.gallery.length} capturas de ${p.name} en grande`}
+                  >
+                    <img src={p.image} alt="" loading="lazy" />
+                    <span className="project__zoom" aria-hidden="true">
+                      Ver {p.gallery.length} {p.gallery.length === 1 ? 'captura' : 'capturas'} ⤢
+                    </span>
+                  </button>
+                ) : p.image ? (
+                  <img
+                    src={p.image}
+                    alt={p.imageFit === 'contain' ? `Logo de ${p.name}` : `Captura de ${p.name}`}
+                    className={p.imageFit === 'contain' ? 'is-logo' : undefined}
+                    loading="lazy"
+                  />
                 ) : (
                   <div className="project__placeholder" aria-hidden="true">
                     {p.name}
@@ -245,6 +286,8 @@ export default function App() {
           </footer>
         </section>
       </main>
+
+      {gallery && <Lightbox {...gallery} onClose={() => setGallery(null)} />}
     </>
   )
 }

@@ -28,6 +28,10 @@ Portafolio de una sola página, con fondo oscuro y scroll. A la izquierda crece 
 - Un pequeño desplazamiento con senos sobre el tiempo hace que los bordes "respiren".
 - Las flores se abren al llegar a su sección. Si el sistema tiene activado **reducir movimiento**, la animación se desactiva.
 
+### Galería de proyectos
+
+Al hacer clic en la imagen de un proyecto se abre su galería en grande. Para agregar capturas, ponlas en `public/projects/` y lístalas en el campo `gallery` del proyecto en `src/data/profile.ts`.
+
 ## Estructura
 
 ```
@@ -35,6 +39,7 @@ src/
 ├── data/profile.ts        # ⭐ toda la información (perfil, experiencia, proyectos, habilidades)
 ├── App.tsx                # secciones y lógica de scroll
 ├── components/Branch.tsx  # panel de la rama y botones sobre cada flor
+├── components/Lightbox.tsx # galería de capturas en grande (← → para navegar, Esc para cerrar)
 └── lily/
     ├── LilyScene.tsx      # escena 3D: tallo, hojas, flores
     ├── lilyGeometry.ts    # parámetros de cada punto

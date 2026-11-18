@@ -61,6 +61,10 @@ export type Project = {
   impact: string
   stack: string[]
   image?: string
+  /** 'contain' para logos: se muestran completos sobre fondo oscuro en vez de recortarse */
+  imageFit?: 'cover' | 'contain'
+  /** capturas que se ven en grande al hacer clic en la imagen (la primera suele ser `image`) */
+  gallery?: string[]
   links: { label: string; url: string }[]
 }
 
@@ -73,6 +77,7 @@ export const projects: Project[] = [
     impact: '1 agente de IA · 20 herramientas · RAG híbrido',
     stack: ['Laravel 13', 'Vue 3', 'Inertia.js', 'PostgreSQL', 'pgvector'],
     image: 'projects/cosechia-cap1.png',
+    gallery: ['projects/cosechia-cap1.png', 'projects/cosechia-cap2.png'],
     links: [],
   },
   {
@@ -83,6 +88,7 @@ export const projects: Project[] = [
     impact: '4 roles de usuario',
     stack: ['FastAPI', 'Django', 'DRF', 'PostgreSQL'],
     image: 'projects/monse-cap1.png',
+    gallery: [1, 2, 3, 4].map((n) => `projects/monse-cap${n}.png`),
     links: [{ label: 'API en GitHub', url: 'https://github.com/miel1144/maquinaMonse' }],
   },
   {
@@ -93,6 +99,7 @@ export const projects: Project[] = [
     impact: 'Offline-first · sensores del dispositivo',
     stack: ['Flutter', 'Dart', 'SQLite'],
     image: 'projects/tonalli-cap1.png',
+    gallery: ['projects/tonalli-cap1.png', ...[2, 3, 4, 5].map((n) => `projects/tonalli-cap${n}.jpeg`)],
     links: [{ label: 'Sitio informativo', url: 'https://github.com/miel1144/tonalli_web' }],
   },
   {
@@ -103,6 +110,41 @@ export const projects: Project[] = [
     impact: 'Instalable · responsive',
     stack: ['Django', 'HTMX', 'PWA'],
     links: [],
+  },
+  {
+    name: 'ANGL · GestoLab · AdminLab',
+    kind: 'Full stack · Web + móvil · UTT',
+    summary:
+      'Gestión de los laboratorios de la UTT: registro de asistencia, reportes de incidencias y reportes en PDF, con backend Django, panel web y app móvil en Flutter con geolocalización.',
+    impact: '3 roles de usuario · reportes en PDF',
+    stack: ['Django', 'Flutter', 'PostgreSQL', 'xhtml2pdf'],
+    image: 'projects/gestolab-cap1.png',
+    gallery: [1, 2, 3, 4, 5].map((n) => `projects/gestolab-cap${n}.png`),
+    links: [],
+  },
+  {
+    name: 'Tijuana Accesible (TJRoute)',
+    kind: 'App móvil · Hackathon Fox Coding 2026',
+    summary:
+      'Reporta problemas de accesibilidad urbana con una foto: Gemini AI clasifica el reporte y lo coloca en un mapa interactivo de la ciudad.',
+    impact: 'Construida en un hackathon · IA para clasificar reportes',
+    stack: ['Flutter', 'Firebase', 'Gemini AI', 'flutter_map'],
+    image: 'projects/tj-route-logo.png',
+    imageFit: 'contain',
+    links: [
+      { label: 'Devpost', url: 'https://devpost.com/software/tjroute' },
+      { label: 'Video demo', url: 'https://www.youtube.com/shorts/Z_hChKxZGI8' },
+      { label: 'Código', url: 'https://github.com/miel1144/hackapromt' },
+    ],
+  },
+  {
+    name: 'note-think',
+    kind: 'App móvil · En desarrollo',
+    summary:
+      'App de notas local-first con estilo neumórfico: editor enriquecido, búsqueda full-text local, papelera recuperable, bloqueo con biometría, recordatorios y exportación a PDF.',
+    impact: 'Local-first · sin depender de internet',
+    stack: ['Flutter', 'Riverpod', 'go_router', 'Isar'],
+    links: [{ label: 'Código', url: 'https://github.com/miel1144/note-think' }],
   },
 ]
 
