@@ -4,14 +4,24 @@ import Lenis from 'lenis'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Branch from './components/Branch'
 import Lightbox from './components/Lightbox'
-import { education, experience, profile, projects, sections, skills } from './data/profile'
+import { education, experience, profile, projects, sections, skills, type MediaItem } from './data/profile'
 import { bloomTargets, motion } from './lily/bloomState'
 
 gsap.registerPlugin(ScrollTrigger)
 
+/** "video y 5 capturas", "4 capturas"… */
+function mediaSummary(items: MediaItem[]) {
+  const videos = items.filter((m) => typeof m !== 'string' && m.kind === 'video').length
+  const images = items.length - videos
+  const parts = []
+  if (videos) parts.push(videos === 1 ? 'video' : `${videos} videos`)
+  if (images) parts.push(images === 1 ? '1 captura' : `${images} capturas`)
+  return parts.join(' y ')
+}
+
 export default function App() {
   const [active, setActive] = useState(0)
-  const [gallery, setGallery] = useState<{ title: string; images: string[]; start: number } | null>(null)
+  const [gallery, setGallery] = useState<{ title: string; items: MediaItem[]; start: number } | null>(null)
   const lenisRef = useRef<Lenis | null>(null)
 
   useEffect(() => {
@@ -198,12 +208,12 @@ export default function App() {
                   <button
                     type="button"
                     className="project__media"
-                    onClick={() => setGallery({ title: p.name, images: p.gallery!, start: 0 })}
-                    aria-label={`Ver ${p.gallery.length} capturas de ${p.name} en grande`}
+                    onClick={() => setGallery({ title: p.name, items: p.gallery!, start: 0 })}
+                    aria-label={`Abrir galería de ${p.name}: ${mediaSummary(p.gallery)}`}
                   >
                     <img src={p.image} alt="" loading="lazy" />
                     <span className="project__zoom" aria-hidden="true">
-                      Ver {p.gallery.length} {p.gallery.length === 1 ? 'captura' : 'capturas'} ⤢
+                      Ver {mediaSummary(p.gallery)} ⤢
                     </span>
                   </button>
                 ) : p.image ? (

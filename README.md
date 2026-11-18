@@ -32,6 +32,14 @@ Portafolio de una sola página, con fondo oscuro y scroll. A la izquierda crece 
 
 Al hacer clic en la imagen de un proyecto se abre su galería en grande. Para agregar capturas, ponlas en `public/projects/` y lístalas en el campo `gallery` del proyecto en `src/data/profile.ts`.
 
+Cada elemento puede ser una ruta (imagen) o un objeto con video y etiqueta, por ejemplo:
+
+```ts
+{ src: 'projects/gestolab-movil.mp4', kind: 'video', poster: 'projects/gestolab-movil-poster.jpg', caption: 'Versión móvil · Flutter' }
+```
+
+Los videos van en MP4 (H.264), sin audio y en baja resolución para que carguen rápido.
+
 ## Estructura
 
 ```

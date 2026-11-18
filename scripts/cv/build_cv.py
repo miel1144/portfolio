@@ -24,11 +24,11 @@ pdfmetrics.registerFont(TTFont("Serif-Italic", str(FONTS / "timesi.ttf")))
 pdfmetrics.registerFont(TTFont("Serif-BoldItalic", str(FONTS / "timesbi.ttf")))
 pdfmetrics.registerFontFamily("Serif", normal="Serif", bold="Serif-Bold", italic="Serif-Italic", boldItalic="Serif-BoldItalic")
 
-BASE = 10.5
+BASE = 10.2
 name_st = ParagraphStyle("name", fontName="Serif-Bold", fontSize=20, leading=24, alignment=TA_CENTER)
 contact_st = ParagraphStyle("contact", fontName="Serif", fontSize=BASE, leading=13, alignment=TA_CENTER)
-section_st = ParagraphStyle("section", fontName="Serif-Bold", fontSize=11.5, leading=14, spaceBefore=9)
-body_st = ParagraphStyle("body", fontName="Serif", fontSize=BASE, leading=12.6)
+section_st = ParagraphStyle("section", fontName="Serif-Bold", fontSize=11.5, leading=14, spaceBefore=7)
+body_st = ParagraphStyle("body", fontName="Serif", fontSize=BASE, leading=12.2)
 bullet_st = ParagraphStyle("bullet", parent=body_st)
 
 # ---------------------------------------------------------------- contenido
@@ -57,8 +57,8 @@ EXPERIENCE = [
         "left2": "<i>Desarrolladora Full Stack · Prácticas profesionales</i>",
         "right2": "Sep 2026 – Dic 2026",
         "bullets": [
-            "Desarrollé en equipo <b>CosechIA</b>, plataforma vitivinícola (Laravel 13, Vue 3, Inertia.js, PostgreSQL) "
-            "para gestionar viñedos, ciclos, bitácoras y clima.",
+            "Desarrollé en equipo <b>CosechIA</b>, plataforma vitivinícola de viñedos, ciclos, bitácoras y clima "
+            "(Laravel 13, Vue 3, PostgreSQL).",
             "Construí el <b>agente de IA</b> sin frameworks: loop de razonamiento con <b>20 herramientas</b> (tool calling) "
             "validadas con JSON Schema que consultan y registran datos de campo dentro de transacciones.",
             "Implementé <b>RAG híbrido</b>: embeddings en pgvector + BM25 (tsvector) combinados con Reciprocal Rank Fusion, "
@@ -74,8 +74,7 @@ EXPERIENCE = [
         "left2": "<i>Desarrolladora web</i>",
         "right2": "2025 – Presente",
         "bullets": [
-            "Desarrollé el sitio web de <b>Pinturas López</b> (ferretería): catálogo de productos con Django y PostgreSQL, "
-            "imágenes en Cloudinary y exportación de datos a Excel.",
+            "<b>Pinturas López</b> (ferretería): sitio con catálogo de productos en Django y PostgreSQL, Cloudinary y exportación a Excel.",
         ],
     },
     {
@@ -84,7 +83,7 @@ EXPERIENCE = [
         "left2": "<i>Diseñadora gráfica</i>",
         "right2": "2023 – Presente",
         "bullets": [
-            "Creo identidad visual, logotipos e ilustraciones para clientes y para mis propios productos con Photoshop e Illustrator.",
+            "Identidad visual, logotipos e ilustraciones para clientes y proyectos propios (Photoshop, Illustrator).",
         ],
     },
 ]
@@ -94,16 +93,14 @@ PROJECTS = [
         "left": "<b>MONSE + MaquinaMonse</b> · <i>FastAPI, Django REST Framework, PostgreSQL</i>",
         "right2": "2026",
         "bullets": [
-            "Sistema de monitoreo de consumo energético en tiempo real con <b>4 roles de usuario</b>: una API asíncrona simula "
-            "medidores y MONSE recibe, diagnostica y visualiza las lecturas.",
+            "Monitoreo energético en tiempo real con <b>4 roles de usuario</b>: una API asíncrona simula medidores y MONSE los diagnostica.",
         ],
     },
     {
         "left": "<b>Tonalli</b> · <i>Flutter, Dart, SQLite</i>",
         "right2": "Concurso UTT 2026",
         "bullets": [
-            "App móvil offline-first que usa el luxómetro del celular para auditar la iluminación del hogar, predecir la "
-            "Tarifa DAC de CFE y dimensionar paneles solares.",
+            "App offline-first que usa el luxómetro del celular para predecir la Tarifa DAC de CFE y dimensionar paneles solares.",
         ],
     },
     {
@@ -111,6 +108,27 @@ PROJECTS = [
         "right2": "2026",
         "bullets": [
             "PWA de trazabilidad financiera para grupos de personas: registro de préstamos, pagos y saldos compartidos.",
+        ],
+    },
+    {
+        "left": "<b>ANGL · GestoLab · AdminLab</b> · <i>Django, Flutter, PostgreSQL</i>",
+        "right2": "2026",
+        "bullets": [
+            "Gestión de laboratorios de la UTT en <b>versión web y móvil</b> con <b>3 roles</b>: asistencia, incidencias y reportes PDF.",
+        ],
+    },
+    {
+        "left": "<b>Tijuana Accesible (TJRoute)</b> · <i>Flutter, Firebase, Gemini AI</i>",
+        "right2": "Hackathon Fox Coding 2026",
+        "bullets": [
+            "App para reportar problemas de accesibilidad urbana con foto; Gemini clasifica cada reporte y lo ubica en un mapa.",
+        ],
+    },
+    {
+        "left": "<b>note-think</b> · <i>Flutter, Riverpod, Isar</i>",
+        "right2": "En desarrollo",
+        "bullets": [
+            "App de notas local-first: editor enriquecido, búsqueda full-text, bloqueo con biometría y exportación a PDF.",
         ],
     },
 ]
@@ -167,7 +185,7 @@ def entry(e):
 def build():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(str(OUT), pagesize=letter, leftMargin=0.7 * inch, rightMargin=0.7 * inch,
-                            topMargin=0.55 * inch, bottomMargin=0.55 * inch,
+                            topMargin=0.5 * inch, bottomMargin=0.45 * inch,
                             title="Imelda Almanza — CV", author="Imelda Almanza", subject="Junior Full Stack Developer")
     story = [Paragraph(NAME, name_st), Spacer(1, 2), Paragraph(CONTACT, contact_st)]
     story += section("Educación")

@@ -54,6 +54,9 @@ export const experience = [
   },
 ]
 
+/** Una ruta suelta es una imagen; el objeto permite video y una etiqueta como "Versión móvil". */
+export type MediaItem = string | { src: string; kind?: 'image' | 'video'; caption?: string; poster?: string }
+
 export type Project = {
   name: string
   kind: string
@@ -63,8 +66,8 @@ export type Project = {
   image?: string
   /** 'contain' para logos: se muestran completos sobre fondo oscuro en vez de recortarse */
   imageFit?: 'cover' | 'contain'
-  /** capturas que se ven en grande al hacer clic en la imagen (la primera suele ser `image`) */
-  gallery?: string[]
+  /** capturas o videos que se ven en grande al hacer clic en la imagen (la primera suele ser `image`) */
+  gallery?: MediaItem[]
   links: { label: string; url: string }[]
 }
 
@@ -116,10 +119,13 @@ export const projects: Project[] = [
     kind: 'Full stack · Web + móvil · UTT',
     summary:
       'Gestión de los laboratorios de la UTT: registro de asistencia, reportes de incidencias y reportes en PDF, con backend Django, panel web y app móvil en Flutter con geolocalización.',
-    impact: '3 roles de usuario · reportes en PDF',
+    impact: 'Versión web y móvil · 3 roles de usuario · reportes en PDF',
     stack: ['Django', 'Flutter', 'PostgreSQL', 'xhtml2pdf'],
     image: 'projects/gestolab-cap1.png',
-    gallery: [1, 2, 3, 4, 5].map((n) => `projects/gestolab-cap${n}.png`),
+    gallery: [
+      { src: 'projects/gestolab-movil.mp4', kind: 'video', poster: 'projects/gestolab-movil-poster.jpg', caption: 'Versión móvil · Flutter' },
+      ...[1, 2, 3, 4, 5].map((n) => ({ src: `projects/gestolab-cap${n}.png`, caption: 'Versión web · Django' })),
+    ],
     links: [],
   },
   {
