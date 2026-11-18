@@ -1,39 +1,57 @@
-# miel1144.github.io
+# Portafolio · Imelda Almanza (miel)
 
-Portafolio de **Imelda Almanza (miel)**, Junior Full Stack Developer en Tijuana, B.C.
+**🌸 Sitio:** https://miel1144.github.io/portfolio/
+**📄 CV (PDF):** https://miel1144.github.io/portfolio/cv/Imelda-Almanza-CV.pdf
 
-Es una sola página con scroll. A la izquierda hay una rama de lirio hecha con unos 170 mil puntos. Cada flor es el botón de una sección y se abre conforme llegas a ella.
+Portafolio de una sola página, con fondo oscuro y scroll. A la izquierda crece una rama de lirios blancos con toques rosas, hechos con unos 170 mil puntos en 3D. Cada flor es el botón de una sección y se abre conforme bajas hasta ella.
 
-## Stack
+## Con qué está construido
 
-- **Vite + React + TypeScript**
-- **Three.js + React Three Fiber**: lirios como nube de puntos. La forma de cada pétalo es una superficie paramétrica que se calcula en el vertex shader, y la apertura (`uBloom`) se anima por completo en la GPU.
-- **GSAP ScrollTrigger + Lenis**: la apertura de las flores, el scroll suave y la aparición del contenido.
-- **GitHub Pages**: se despliega con GitHub Actions al hacer push a `main`.
+| Herramienta | Para qué se usó |
+|---|---|
+| **Vite** | Servidor de desarrollo y build estático |
+| **React 19 + TypeScript** | Interfaz y secciones del sitio |
+| **Three.js + React Three Fiber** | La escena 3D de la rama y los lirios |
+| **GLSL (shaders propios)** | Forma, color y movimiento de cada pétalo, calculados en la GPU |
+| **GSAP + ScrollTrigger** | Abrir cada flor según el scroll y animar la entrada del contenido |
+| **Lenis** | Scroll suave |
+| **CSS puro** | Tema oscuro, diseño responsive, tipografías Fraunces e Inter (Google Fonts) |
+| **Python + ReportLab** | Generar el CV en PDF estilo Harvard |
+| **GitHub Actions + GitHub Pages** | Compilar y publicar el sitio en cada push a `main` |
+
+### Cómo funcionan los lirios
+
+- Cada lirio es una **nube de puntos**: 6 tépalos (3 externos y 3 internos), 6 estambres y un pistilo.
+- La forma del pétalo es una **superficie paramétrica**. Su eje es un arco cuyo ángulo crece a lo largo del pétalo, así que la posición tiene fórmula cerrada y se puede calcular directamente en el vertex shader.
+- Un solo valor, `uBloom` (de 0 a 1), lleva la flor de **capullo cerrado a flor abierta**: los pétalos se separan, se curvan hacia atrás y se pintan con su color final.
+- El color se calcula por punto: blanco en general, rubor rosa en el centro del pétalo, motas, base verde y bordes con brillo.
+- Un pequeño desplazamiento con senos sobre el tiempo hace que los bordes "respiren".
+- Las flores se abren al llegar a su sección. Si el sistema tiene activado **reducir movimiento**, la animación se desactiva.
 
 ## Estructura
 
 ```
 src/
-├── data/profile.ts        # ⭐ toda la información (perfil, experiencia, proyectos, skills)
-├── App.tsx                # secciones + lógica de scroll
-├── components/Branch.tsx  # panel de la rama + botones sobre cada flor
+├── data/profile.ts        # ⭐ toda la información (perfil, experiencia, proyectos, habilidades)
+├── App.tsx                # secciones y lógica de scroll
+├── components/Branch.tsx  # panel de la rama y botones sobre cada flor
 └── lily/
-    ├── LilyScene.tsx      # escena 3D (tallo, hojas, flores)
-    ├── lilyGeometry.ts    # parámetros de los puntos
+    ├── LilyScene.tsx      # escena 3D: tallo, hojas, flores
+    ├── lilyGeometry.ts    # parámetros de cada punto
     ├── shaders.ts         # forma, color y movimiento del lirio
     ├── layout.ts          # posiciones compartidas entre la escena y los botones
-    └── bloomState.ts      # apertura de cada flor (lo escribe el scroll)
-scripts/cv/build_cv.py     # genera public/cv/Imelda-Almanza-CV.pdf (estilo Harvard)
+    └── bloomState.ts      # apertura de cada flor (la escribe el scroll)
+scripts/cv/build_cv.py     # genera public/cv/Imelda-Almanza-CV.pdf
 ```
 
-## Scripts
+## Correr en local
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173  (?bloom=all abre todas las flores)
-npm run build
-python scripts/cv/build_cv.py   # regenera el CV (requiere reportlab)
+npm run dev                      # http://localhost:5173/portfolio/
+                                 # agrega ?bloom=all para ver todas las flores abiertas
+npm run build                    # build de producción en dist/
+python scripts/cv/build_cv.py    # regenera el CV (requiere: pip install reportlab)
 ```
 
 ## Flujo de Git

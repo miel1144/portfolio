@@ -37,7 +37,7 @@ CONTACT = (
     "Tijuana, B.C. &nbsp;·&nbsp; almanzaaimeelda@gmail.com &nbsp;·&nbsp; "
     '<link href="https://www.linkedin.com/in/imelda-almanza">linkedin.com/in/imelda-almanza</link> &nbsp;·&nbsp; '
     '<link href="https://github.com/miel1144">github.com/miel1144</link> &nbsp;·&nbsp; '
-    '<link href="https://miel1144.github.io">miel1144.github.io</link>'
+    '<link href="https://miel1144.github.io/portfolio/">miel1144.github.io/portfolio</link>'
 )
 
 EDUCATION = [

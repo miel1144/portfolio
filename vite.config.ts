@@ -1,9 +1,9 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-// Sitio de usuario en GitHub Pages (miel1144.github.io): se sirve desde la raíz.
+// Sitio de proyecto en GitHub Pages: https://miel1144.github.io/portfolio/
 export default defineConfig({
-  base: '/',
+  base: '/portfolio/',
   plugins: [react()],
   build: { chunkSizeWarningLimit: 1000 },
 })
