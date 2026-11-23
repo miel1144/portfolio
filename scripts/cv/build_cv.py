@@ -3,6 +3,7 @@
 Uso:  python scripts/cv/build_cv.py
 Requiere: reportlab (python -m pip install reportlab)
 """
+from datetime import date
 from pathlib import Path
 
 from reportlab.lib.colors import black
@@ -31,6 +32,30 @@ section_st = ParagraphStyle("section", fontName="Serif-Bold", fontSize=11.5, lea
 body_st = ParagraphStyle("body", fontName="Serif", fontSize=BASE, leading=12.2)
 bullet_st = ParagraphStyle("bullet", parent=body_st)
 
+# ---------------------------------------------------------------- tiempo
+# Misma lógica que src/data/tiempo.ts: si cambias algo, actualiza ambos.
+INICIO_PROGRAMACION = (2024, 8)  # agosto 2024
+INICIO_DISENO = 2023
+INICIO_WEB = 2025
+
+
+def plural(n, uno, varios):
+    return f"{n} {uno if n == 1 else varios}"
+
+
+def tiempo_desde(anio, mes, hoy=None):
+    """Años y meses completos desde anio/mes hasta hoy: "2 años 3 meses"."""
+    hoy = hoy or date.today()
+    total = (hoy.year - anio) * 12 + (hoy.month - mes)
+    anios, meses = divmod(total, 12)
+    partes = []
+    if anios > 0:
+        partes.append(plural(anios, "año", "años"))
+    if meses > 0 or anios == 0:
+        partes.append(plural(meses, "mes", "meses"))
+    return " ".join(partes)
+
+
 # ---------------------------------------------------------------- contenido
 NAME = "IMELDA ALMANZA"
 CONTACT = (
@@ -46,7 +71,7 @@ EDUCATION = [
         "right": "Tijuana, B.C.",
         "left2": "<i>Desarrollo de Software Multiplataforma</i>",
         "right2": "En curso",
-        "bullets": ["2 años 3 meses de formación en programación full stack y desarrollo móvil."],
+        "bullets": [f"{tiempo_desde(*INICIO_PROGRAMACION)} de formación en programación full stack y desarrollo móvil."],
     },
 ]
 
@@ -72,7 +97,7 @@ EXPERIENCE = [
         "left": "<b>Freelance</b>",
         "right": "Tijuana, B.C.",
         "left2": "<i>Desarrolladora web</i>",
-        "right2": "2025 – Presente",
+        "right2": f"{INICIO_WEB} – Presente",
         "bullets": [
             "<b>Pinturas López</b> (ferretería): sitio con catálogo de productos en Django y PostgreSQL, Cloudinary y exportación a Excel.",
         ],
@@ -81,7 +106,7 @@ EXPERIENCE = [
         "left": "",
         "right": "",
         "left2": "<i>Diseñadora gráfica</i>",
-        "right2": "2023 – Presente",
+        "right2": f"{INICIO_DISENO} – Presente",
         "bullets": [
             "Identidad visual, logotipos e ilustraciones para clientes y proyectos propios (Photoshop, Illustrator).",
         ],

@@ -1,6 +1,10 @@
 // Toda la información del portafolio vive aquí. El CV en PDF se genera aparte
 // con scripts/cv/build_cv.py: si cambias algo, actualiza ambos.
 
+import { INICIO_DISEÑO, INICIO_PROGRAMACION, INICIO_WEB, añosDesde, tiempoDesde } from './tiempo'
+
+const programacion = tiempoDesde(INICIO_PROGRAMACION.año, INICIO_PROGRAMACION.mes)
+
 export const profile = {
   name: 'Imelda Almanza',
   nickname: 'miel',
@@ -15,13 +19,13 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/imelda-almanza',
   },
   about: [
-    'Soy desarrolladora full stack con 2 años 3 meses de formación en programación y 3 años como diseñadora gráfica freelance. Esa mezcla me hace cuidar tanto la lógica de un sistema como la forma en que alguien lo usa.',
+    `Soy desarrolladora full stack con ${programacion} de formación en programación y ${añosDesde(INICIO_DISEÑO)} como diseñadora gráfica freelance. Esa mezcla me hace cuidar tanto la lógica de un sistema como la forma en que alguien lo usa.`,
     'Me gusta entender cómo fluye todo: los datos, los procesos, las personas. He construido un agente de IA para viñedos, monitoreo de energía en tiempo real y apps móviles que funcionan sin internet.',
   ],
   highlights: [
-    { value: '2 años 3 m', label: 'formación en programación' },
-    { value: '3 años', label: 'diseño gráfico freelance' },
-    { value: '1 año', label: 'desarrollo web freelance' },
+    { value: tiempoDesde(INICIO_PROGRAMACION.año, INICIO_PROGRAMACION.mes, true), label: 'formación en programación' },
+    { value: añosDesde(INICIO_DISEÑO), label: 'diseño gráfico freelance' },
+    { value: añosDesde(INICIO_WEB), label: 'desarrollo web freelance' },
   ],
 }
 
@@ -41,7 +45,7 @@ export const experience = [
   {
     company: 'Freelance',
     role: 'Desarrolladora web',
-    period: '2025 – Presente',
+    period: `${INICIO_WEB} – Presente`,
     points: [
       'Pinturas López (ferretería): sitio con catálogo de productos en Django y PostgreSQL, imágenes en Cloudinary y exportación a Excel.',
     ],
@@ -49,7 +53,7 @@ export const experience = [
   {
     company: 'Freelance',
     role: 'Diseñadora gráfica',
-    period: '2023 – Presente',
+    period: `${INICIO_DISEÑO} – Presente`,
     points: ['Identidad visual, logotipos e ilustración para clientes y para mis propios productos con Photoshop e Illustrator.'],
   },
 ]
@@ -166,7 +170,7 @@ export const skills = [
 export const education = {
   school: 'Universidad Tecnológica de Tijuana',
   degree: 'Desarrollo de Software Multiplataforma',
-  status: 'En curso · 2 años 3 meses de formación',
+  status: `En curso · ${programacion} de formación`,
 }
 
 // Una flor por sección, de arriba hacia abajo en la rama.
